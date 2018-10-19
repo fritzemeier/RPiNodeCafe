@@ -168,18 +168,35 @@ def deleteMessages():
         	message.delete()
 
 
-voice = Voice()
-voice.login('<<email which Pi uses to receive texts>>', '<<password of email address>>')
+if __name__ == '__main__':
+	voice = Voice()
+	voice.login('<<email which Pi uses to receive texts>>', '<<password of email address>>')
 
-voice.sms()
+	voice.sms()
 
-text = []
-cmd = []
+	text = []
+	cmd = []
 
-for msg in extractsms(voice.sms.html):
-	if str(msg[u'from']) == '+1<<phone number from which you will be sending commands -- including area code>>:':
-		for word in msg[u'text'].split(' '):
-			cmd.append(word)
-		if execCmd(cmd) == 1:
-			deleteMessages()
+        if len(sys.argv) < 2:
+		for msg in extractsms(voice.sms.html):
+			if str(msg[u'from']) == '+1<<phone number from which you will be sending commands -- including area code>>:':
+				for word in msg[u'text'].split(' '):
+					cmd.append(word)
+				if execCmd(cmd) == 1:
+					deleteMessages()
 
+        elif len(sys.argv) >= 2:
+                for i in sys.argv:
+                        cmd.append(i)
+
+                if cmd[1].lower() == '-n':
+                        del cmd[:]
+                        cmd.append('coffee')
+                elif cmd[1].lower() == '-s':
+                        time = cmd[2]
+                        del cmd[:]
+                        cmd.append('schedule')
+                        cmd.append('coffee')
+                        cmd.append(time)
+
+                execCmd(cmd)

@@ -27,20 +27,19 @@ This is why a separate account is suggested.
 2) Follow the directions.
 
 # Dependencies
-The install shell script will ask if you have the dependencies needed before
-installing them.
+The install.sh does ask if some of these are installed (marked with *), others my need to be manually installed.
+BeautifulSoup*
 
-BeautifulSoup
-
-python-crontab
+python-crontab*
 
 pycurl
+	--- https://brianchan.us/2018/01/19/pip-install-pycurl/ Might help if having issues with installing pycurl ---
 
 StringIO
 
 datetime
 
-pygooglevoice by https://github.com/pettazz
+pygooglevoice* by https://github.com/pettazz
 
     --- Most updated version of pettazz's project does not work in conjunction, so I've added the correct one to the files ---
 
