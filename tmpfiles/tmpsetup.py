@@ -32,10 +32,10 @@ def replace(match):
                 print "Passwords did not match"
     elif placeholder == 'password to SSID':
         while True:
-            password = getpass('Enter password for SSID: ')
-            password2 = getpass('Retype password for SSID: ')
-            if password == password2:
-                return replacements.setdefault(placeholder, password)
+            password3 = getpass('Enter password for SSID: ')
+            password4 = getpass('Retype password for SSID: ')
+            if password3 == password4:
+                return replacements.setdefault(placeholder, password3)
             else:
                 print "Passwords did not match"
     else:
