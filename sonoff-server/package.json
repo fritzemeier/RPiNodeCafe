@@ -1,0 +1,64 @@
+{
+  "name": "simple-sonoff-server",
+  "version": "2.0.0",
+  "description": "A simple SONOFF Cloud replacement.",
+  "main": "sonoff.server.module.js",
+  "dependencies": {
+    "fs": "^0.0.1-security",
+    "http": "^0.0.0",
+    "https": "^1.0.0",
+    "express": "^4.16.2",
+    "wifi-control": "^2.0.1",
+    "nodejs-websocket": "^1.7.1",
+    "request": "^2.83.0",
+    "url": "^0.11.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mdopp/simple-sonoff-server.git"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "sonoff"
+  ],
+  "author": {
+    "name": "Michael Dopp"
+  },
+  "license": "ISC",
+  "gitHead": "4b8c8021539d201035e8654832f8f0eaae3e7c64",
+  "bugs": {
+    "url": "https://github.com/mdopp/simple-sonoff-server/issues"
+  },
+  "homepage": "https://github.com/mdopp/simple-sonoff-server#readme",
+  "_id": "simple-sonoff-server@2.0.0",
+  "_shasum": "e028411a4652edae69f2896601466ed17eed182b",
+  "_from": "simple-sonoff-server@^2.0.0",
+  "_npmVersion": "3.6.0",
+  "_nodeVersion": "5.6.0",
+  "_npmUser": {
+    "name": "saryn",
+    "email": "xsara.martan@gmail.com"
+  },
+  "dist": {
+    "shasum": "e028411a4652edae69f2896601466ed17eed182b",
+    "tarball": "https://registry.npmjs.org/simple-sonoff-server/-/simple-sonoff-server-2.0.0.tgz",
+    "fileCount": 12,
+    "unpackedSize": 58139
+  },
+  "maintainers": [
+    {
+      "name": "saryn",
+      "email": "xsara.martan@gmail.com"
+    }
+  ],
+  "directories": {},
+  "_npmOperationalInternal": {
+    "host": "s3://npm-registry-packages",
+    "tmp": "tmp/simple-sonoff-server_2.0.0_1520171687121_0.330187059895777"
+  },
+  "_resolved": "https://registry.npmjs.org/simple-sonoff-server/-/simple-sonoff-server-2.0.0.tgz",
+  "readme": "ERROR: No README data found!"
+}

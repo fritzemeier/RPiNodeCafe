@@ -1,0 +1,12 @@
+{
+    "router": {
+        "SSID": "<ENTER OWN SSID NAME>",
+        "password": "<ENTER OWN SSID PASSWORD>"
+    },
+    "server": {
+        "IP": "<SERVER HOSTNAME/IP>",
+        "httpPort": 1080,
+        "httpsPort": 1081,
+        "websocketPort": 1443
+    }
+}
