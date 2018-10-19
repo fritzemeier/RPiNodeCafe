@@ -24,7 +24,9 @@ This is why a separate account is suggested.
 
 2) Once the repository is cloned, type "./update.sh" into a terminal to run the update and install scripts.
 
-2) Follow the directions.
+3) Start the NodeJS server using the sonoff.server.js file.
+
+4) Connect the sonoff device to the server -- instructions at https://github.com/mdopp/simple-sonoff-server
 
 # Dependencies
 The install.sh does ask if some of these are installed (marked with *), others my need to be manually installed.

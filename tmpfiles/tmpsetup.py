@@ -9,7 +9,7 @@ import os
 import re
 from getpass import getpass
 
-replacements = {"name of Raspberry Pi account":"<<name of Raspberry Pi account>>", "path":"<<path>>", "phone number from which you will be sending commands -- including area code":"<<phone number from which you will be sending commands -- including area code>>", "email which Pi uses to receive texts":"<<email which Pi uses to receive texts>>", "password of email address":"<<password of email address>>", "IP of NodeJS server":"<<IP of NodeJS server>>", "port of NodeJS server":"<<port of NodeJS server>>", "name of SSID":"<<name of SSID>>"}
+replacements = {"name of Raspberry Pi account":"<<name of Raspberry Pi account>>", "path":"<<path>>", "phone number from which you will be sending commands -- including area code":"<<phone number from which you will be sending commands -- including area code>>", "email which Pi uses to receive texts":"<<email which Pi uses to receive texts>>", "password of email address":"<<password of email address>>", "IP of NodeJS server":"<<IP of NodeJS server>>", "port of NodeJS server":"<<port of NodeJS server>>", "name of SSID":"<<name of SSID>>", "password to SSID":"<<password to SSID>>"}
 pattern = '<<([^>]*)>>'
 
 
@@ -30,7 +30,7 @@ def replace(match):
                 return replacements.setdefault(placeholder, password)
             else:
                 print "Passwords did not match"
-    elif placeholder == 'password of SSID':
+    elif placeholder == 'password to SSID':
         while True:
             password = getpass('Enter password for SSID: ')
             password2 = getpass('Retype password for SSID: ')
@@ -43,37 +43,31 @@ def replace(match):
 
 
 def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument('infile', type=argparse.FileType('r'))
-    parser.add_argument('outfile', type=argparse.FileType('w'))
-    parser.add_argument('infile2', type=argparse.FileType('r'))
-    parser.add_argument('outfile2', type=argparse.FileType('w'))
-    parser.add_argument('infile3', type=argparse.FileType('r'))
-    parser.add_argument('outfile3', type=argparse.FileType('w'))
-    args = parser.parse_args()
+    infiles = []
+    outfiles = []
+
+    k = 1
+    for x in sys.argv[1:]:
+        if k % 2 == 1:
+                infiles.append(x)
+        elif k % 2 == 0:
+                outfiles.append(x)
+        k = k + 1
 
     matcher = re.compile(pattern)
 
-    for line in args.infile:
-        new_line = matcher.sub(replace, line)
-        args.outfile.write(new_line)
+    k = 0
+    for i in infiles:
+        iname = open(i,'r')
+        oname = open(outfiles[k], 'w')
 
-    args.infile.close()
-    args.outfile.close()
+        for line in iname:
+                new_line = matcher.sub(replace, line)
+                oname.write(new_line)
 
-    for line in args.infile2:
-        new_line = matcher.sub(replace, line)
-        args.outfile2.write(new_line)
-
-    args.infile2.close()
-    args.outfile2.close()
-
-    for line in args.infile3:
-        new_line = matcher.sub(replace, line)
-        args.outfile3.write(new_line)
-
-    args.infile3.close()
-    args.outfile3.close()
+        iname.close()
+        oname.close()
+        k = k + 1
 
 if __name__ == '__main__':
     main()
