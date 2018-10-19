@@ -85,12 +85,12 @@ def makeCoffee(cmd):
 		extra = ''
 		for x in cmd[1:]:
 			extra = extra + ' ' + x
-		log = 'Instant made coffee from cell at ' + str(datetime.now()) + '\n	Extra arguments: ' + extra)
+		log = 'Instant made coffee from cell at ' + str(datetime.now()) + '\n	Extra arguments: ' + extra
 		sms = "Coffee auto started from cell\nExtra arguments were: " + extra
 
         buff = StringIO()
         c = pycurl.Curl()
-        c.setopt(c.URL, 'http://<<IP of node server>>/devices/<<Sonoff WiFi switch device name>>/status')
+        c.setopt(c.URL, 'http://<<IP of NodeJS server>>:<<port of NodeJS server>>/devices/<<Sonoff WiFi switch device name>>/status')
         c.setopt(c.WRITEDATA, buff)
         c.perform()
         c.close()
@@ -98,20 +98,20 @@ def makeCoffee(cmd):
 
         c = pycurl.Curl()
         if buff.getvalue() == '0':
-                c.setopt(c.URL, 'http://<<IP of node server>>/devices/<<Sonoff WiFi switch device name>>/on')
+                c.setopt(c.URL, 'http://<<IP of NodeJS server>>:<<port of NodeJS server>>/devices/<<Sonoff WiFi switch device name>>/on')
                 c.setopt(c.WRITEDATA, buff)
                 log = log + ' | Turned on relay'
         else:
-                c.setopt(c.URL, 'http://<<IP of node server>>/devices/<<Sonoff WiFi switch device name>>/off')
+                c.setopt(c.URL, 'http://<<IP of NodeJS server>>:<<port of NodeJS server>>/devices/<<Sonoff WiFi switch device name>>/off')
                 c.setopt(c.WRITEDATA, buff)
                 log = log + ' | Turned off relay'
                 sms = ''
         c.perform()
         c.close()
 
-	if log != ''::
-		myFile.write('\n' + log)
+	if log != '':
 		myFile = open('<<path>>/log.txt','a')
+		myFile.write('\n' + log)
 	if sms != '':
 		voice.send_sms("+1<<phone number from which you will be sending commands -- including area code>>", sms)
 
@@ -128,10 +128,10 @@ def cancCoff():
                 	cron.remove(job)
         cron.write()
 	if delete == 1:
-		log = 'Canceled all scheduled coffee.')
-		sms = "Canceling all scheduled coffee.")
+		log = 'Canceled all scheduled coffee.'
+		sms = "Canceling all scheduled coffee."
 	else:
-		log = 'Attempted to cancel scheduled coffee, but none scheduled.')
+		log = 'Attempted to cancel scheduled coffee, but none scheduled.'
 		sms = "No coffee currently scheduled."
 	if log != '' and sms != "":
 		myFile = open('<<path>>/log.txt', 'a')

@@ -1,11 +1,11 @@
 {
     "router": {
-        "SSID": "<<ENTER OWN SSID NAME>>",
-        "password": "<<ENTER OWN SSID PASSWORD>>"
+        "SSID": "<<name of SSID>>",
+        "password": "<<password to SSID>>"
     },
     "server": {
-        "IP": "<<SERVER HOSTNAME/IP>>",
-        "httpPort": 1080,
+        "IP": "<<IP of NodeJS server>>",
+        "httpPort": <<port of NodeJS server>>,
         "httpsPort": 1081,
         "websocketPort": 1443
     }
