@@ -9,7 +9,7 @@ import os
 import re
 from getpass import getpass
 
-replacements = {"name of Raspberry Pi account":"<<name of Raspberry Pi account>>", "path":"<<path>>", "phone number from which you will be sending commands -- including area code":"<<phone number from which you will be sending commands -- including area code>>", "email which Pi uses to receive texts":"<<email which Pi uses to receive texts>>", "password of email address":"<<password of email address>>"}
+replacements = {"name of Raspberry Pi account":"<<name of Raspberry Pi account>>", "path":"<<path>>", "phone number from which you will be sending commands -- including area code":"<<phone number from which you will be sending commands -- including area code>>", "email which Pi uses to receive texts":"<<email which Pi uses to receive texts>>", "password of email address":"<<password of email address>>", "IP of NodeJS server":"<<IP of NodeJS server>>", "port of NodeJS server":"<<port of NodeJS server>>", "name of SSID":"<<name of SSID>>"}
 pattern = '<<([^>]*)>>'
 
 
@@ -26,6 +26,14 @@ def replace(match):
         while True:
             password = getpass('Enter password for email address: ')
             password2 = getpass('Retype password for email address: ')
+            if password == password2:
+                return replacements.setdefault(placeholder, password)
+            else:
+                print "Passwords did not match"
+    elif placeholder == 'password of SSID':
+        while True:
+            password = getpass('Enter password for SSID: ')
+            password2 = getpass('Retype password for SSID: ')
             if password == password2:
                 return replacements.setdefault(placeholder, password)
             else:
