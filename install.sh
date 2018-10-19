@@ -28,7 +28,7 @@ if [ "$A" = "y" ]; then
 
 
 		"
-		crontab -l >> tmp
+		crontab -u pi -l >> tmp
 		echo "* * * * * python $PWD/checkforcoffee.py >> $PWD/coffeecron.log 2>&1 #coffeecheck" >> tmp
 		crontab tmp
 		rm tmp

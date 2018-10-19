@@ -101,11 +101,18 @@ def makeCoffee(cmd):
                 c.setopt(c.URL, 'http://<<IP of NodeJS server>>:<<port of NodeJS server>>/devices/<<Sonoff WiFi switch device name>>/on')
                 c.setopt(c.WRITEDATA, buff)
                 log = log + ' | Turned on relay'
+                d = datetime.now()
+                t = d.minute + 15
+                cron = CronTab(user='pi')
+                job = cron.new(command='python ~/cafe/checkforcoffee2.py -n', comment='start coffee')
+                job.minute.on(t)
+                cron.write()
         else:
                 c.setopt(c.URL, 'http://<<IP of NodeJS server>>:<<port of NodeJS server>>/devices/<<Sonoff WiFi switch device name>>/off')
                 c.setopt(c.WRITEDATA, buff)
                 log = log + ' | Turned off relay'
                 sms = ''
+		cancCoff(0)
         c.perform()
         c.close()
 
@@ -117,7 +124,7 @@ def makeCoffee(cmd):
 
 	return 1
 
-def cancCoff():
+def cancCoff(text):
 	log = ''
 	sms = ''
 	delete = 0
@@ -126,13 +133,17 @@ def cancCoff():
 	        if job.comment == 'start coffee':
 			delete = 1
                 	cron.remove(job)
-        cron.write()
-	if delete == 1:
+	if delete == 1 and text == 1:
+	        cron.write()
 		log = 'Canceled all scheduled coffee.'
 		sms = "Canceling all scheduled coffee."
-	else:
+	elif text == 1:
 		log = 'Attempted to cancel scheduled coffee, but none scheduled.'
 		sms = "No coffee currently scheduled."
+	elif text == 0:
+		log = "Coffee finished at " + str(datetime.now())
+                sms = "Coffe finished"
+
 	if log != '' and sms != "":
 		myFile = open('<<path>>/log.txt', 'a')
 		myFile.write('\n' + log)
@@ -158,7 +169,7 @@ def execCmd(cmd):
 	elif str(cmd[0]+cmd[1]).lower() == 'schedulecoffee':
 		complete = schedCoff(cmd)
 	elif str(cmd[0]).lower() == 'cancel':
-		complete = cancCoff()
+		complete = cancCoff(1)
 	else:
 		complete = incorrectPhrase(cmd)
 	return complete
@@ -176,6 +187,7 @@ if __name__ == '__main__':
 
 	text = []
 	cmd = []
+	tmp = []
 
         if len(sys.argv) < 2:
 		for msg in extractsms(voice.sms.html):
@@ -186,17 +198,16 @@ if __name__ == '__main__':
 					deleteMessages()
 
         elif len(sys.argv) >= 2:
-                for i in sys.argv:
-                        cmd.append(i)
+                for i in sys.argv[1:]:
+                        tmp.append(i)
 
-                if cmd[1].lower() == '-n':
-                        del cmd[:]
+                if tmp[0].lower() == '-n':
                         cmd.append('coffee')
-                elif cmd[1].lower() == '-s':
-                        time = cmd[2]
-                        del cmd[:]
-                        cmd.append('schedule')
-                        cmd.append('coffee')
-                        cmd.append(time)
+                elif tmp[0].lower() == '-s':
+                        time = tmp[1]
+			for x in ['schedule', 'coffee', time]:
+	                        cmd.append(x)
+		elif tmp[0].lower() == '-c':
+			cmd.append('cancel')
 
                 execCmd(cmd)
