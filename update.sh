@@ -1,13 +1,16 @@
 #Updates files with users information
 echo "Have you run update.sh before? (y/n) "
 read A
-if [ "$A" = "y" ]; then
+if [ "$A" = "n" ]; then
 	echo "Installing files"
 	python initialsetup.py $PWD/tmpfiles/tmpsetup.py setup.py $PWD/tmpfiles/tmpcheckforcoffee.py checkforcoffee.py $PWD/tmpfiles/tmpdeletetextmessages.py deletetextmessages.py $PWD/tmpfiles/tmpjsonconfig $PWD/sonoff-server/sonoff.config.json
 	rm initialsetup.py
-else
+fi
+if [ "$A" = "y" ]; then
 	echo "Updating files"
 	python setup.py $PWD/tmpfiles/tmpcheckforcoffee.py checkforcoffee.py $PWD/tmpfiles/tmpdeletetextmessages.py deletetextmessages.py $PWD/tmpfiles/tmpjsonconfig $PWD/sonoff-server/sonoff.config.json
+else
+	echo "Skipping updating/installing files"
 fi
 
 echo "----------------------------------------------
