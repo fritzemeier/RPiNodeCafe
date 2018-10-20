@@ -1,12 +1,16 @@
 #Updates files with users information
-echo "Have you run update.sh before? (y/n/any other key to skip) "
+echo "Enter '1' if this is your first time installing the repo"
+echo "Enter '1' if you're changing information"
+echo "Enter '2' if you're updating files after pulling down the repo"
+echo "Enter any other key if you want to skip this part."
+
 read A
-if [ "$A" = "n" ]; then
+if [ "$A" = "1" ]; then
 	echo "Installing files"
 	python initialsetup.py $PWD/tmpfiles/tmpsetup.py setup.py $PWD/tmpfiles/tmpcheckforcoffee.py checkforcoffee.py $PWD/tmpfiles/tmpdeletetextmessages.py deletetextmessages.py $PWD/tmpfiles/tmpjsonconfig $PWD/sonoff-server/sonoff.config.json
 	rm initialsetup.py
 fi
-if [ "$A" = "y" ]; then
+if [ "$A" = "2" ]; then
 	echo "Updating files"
 	python setup.py $PWD/tmpfiles/tmpcheckforcoffee.py checkforcoffee.py $PWD/tmpfiles/tmpdeletetextmessages.py deletetextmessages.py $PWD/tmpfiles/tmpjsonconfig $PWD/sonoff-server/sonoff.config.json
 else

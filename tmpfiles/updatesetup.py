@@ -4,12 +4,13 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+import argparse
+import sys
 import os
 import re
-import sys
 from getpass import getpass
 
-replacements = {"name of Raspberry Pi account":"<<name of Raspberry Pi account>>", "path":"<<path>>", "phone number from which you will be sending commands -- including area code":"<<phone number from which you will be sending commands -- including area code>>", "email which Pi uses to receive texts":"<<email which Pi uses to receive texts>>", "password of email address":"<<password of email address>>", "IP of NodeJS server":"<<IP of NodeJS server>>", "port of NodeJS server":"<<port of NodeJS server>>", "name of SSID":"<<name of SSID>>", "password to SSID":"<<password to SSID>>","Sonoff WiFi switch device name":"<<Sonoff WiFi switch device name>>"}
+replacements = {}
 pattern = '<<([^>]*)>>'
 
 
@@ -32,8 +33,8 @@ def replace(match):
                 print "Passwords did not match"
     elif placeholder == 'password to SSID':
         while True:
-            password3 = getpass('Enter password for SSID: ')
-            password4 = getpass('Retype password for SSID: ')
+            password3 = getpass('Enter password for the router: ')
+            password4 = getpass('Retype password for router: ')
             if password3 == password4:
                 return replacements.setdefault(placeholder, password3)
             else:
@@ -43,30 +44,31 @@ def replace(match):
 
 
 def main():
+
     infiles = []
     outfiles = []
 
     k = 1
     for x in sys.argv[1:]:
-        if k % 2 == 1:
-                infiles.append(x)
-        elif k % 2 == 0:
-                outfiles.append(x)
-        k = k + 1
+	if k % 2 == 1:
+		infiles.append(x)
+	elif k % 2 == 0:
+		outfiles.append(x)
+	k = k + 1
 
     matcher = re.compile(pattern)
 
     k = 0
     for i in infiles:
-        iname = open(i,'r')
-        oname = open(outfiles[k], 'w')
+	iname = open(i,'r')
+	oname = open(outfiles[k], 'w')
 
-        for line in iname:
-                new_line = matcher.sub(replace, line)
-                oname.write(new_line)
+	for line in iname:
+		new_line = matcher.sub(replace, line)
+		oname.write(new_line)
 
-        iname.close()
-        oname.close()
+	iname.close()
+	oname.close()
         k = k + 1
 
 if __name__ == '__main__':
