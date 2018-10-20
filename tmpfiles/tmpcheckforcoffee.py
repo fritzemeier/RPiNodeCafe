@@ -104,7 +104,7 @@ def makeCoffee(cmd):
                 d = datetime.now()
                 t = d.minute + 15
                 cron = CronTab(user='pi')
-                job = cron.new(command='python ~/cafe/checkforcoffee2.py -n', comment='start coffee')
+                job = cron.new(command='python <<path>>/checkforcoffee.py -n', comment='start coffee')
                 job.minute.on(t)
                 cron.write()
         else:
