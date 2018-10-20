@@ -4,9 +4,9 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-import argparse
 import os
 import re
+import sys
 from getpass import getpass
 
 replacements = {"name of Raspberry Pi account":"<<name of Raspberry Pi account>>", "path":"<<path>>", "phone number from which you will be sending commands -- including area code":"<<phone number from which you will be sending commands -- including area code>>", "email which Pi uses to receive texts":"<<email which Pi uses to receive texts>>", "password of email address":"<<password of email address>>", "IP of NodeJS server":"<<IP of NodeJS server>>", "port of NodeJS server":"<<port of NodeJS server>>", "name of SSID":"<<name of SSID>>", "password to SSID":"<<password to SSID>>"}
