@@ -41,6 +41,8 @@ StringIO
 
 datetime
 
+NodeJS
+
 pygooglevoice* by https://github.com/pettazz
 
     --- Most updated version of pettazz's project does not work in conjunction, so I've added the correct one to the files ---

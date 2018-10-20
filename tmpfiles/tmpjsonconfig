@@ -5,8 +5,8 @@
     },
     "server": {
         "IP": "<<IP of NodeJS server>>",
-        "httpPort": <<port of NodeJS server>>,
-        "httpsPort": 1081,
+        "httpPort": <<port of NodeJS server HTTP connections>>,
+        "httpsPort": <<port of NodeJS server HTTPS connections>>,
         "websocketPort": 1443
     }
 }
