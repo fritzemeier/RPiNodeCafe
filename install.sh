@@ -1,9 +1,9 @@
 #!/bin/bash
 #Installs dependencies
-echo "Have you installed of the dependencies already?"
+echo "Have you installed all of the dependencies already?"
 read A
 
-if [ "$A" = "y" ]; then
+if [ "$A" = "n" ]; then
 	echo "The following questions will attempt to run as a sudoer."
 	echo "Do you have the BeautifulSoup python module installed? (y/n) "
 	read A
@@ -52,6 +52,8 @@ if [ "$A" = "y" ]; then
 
 	"
 	echo "Finished installing all dependencies"
+else
+	echo "Skipping the installation step."
 fi
 
 echo "

@@ -1,5 +1,5 @@
 #Updates files with users information
-echo "Have you run update.sh before? (y/n) "
+echo "Have you run update.sh before? (y/n/any other key to skip) "
 read A
 if [ "$A" = "n" ]; then
 	echo "Installing files"
