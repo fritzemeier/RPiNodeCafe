@@ -67,7 +67,7 @@ def schedCoff(cmd):
 	else:
 		mins = int(time[3])
 	cron = CronTab(user='<<name of Raspberry Pi account>>')
-	job = cron.new(command='python <<path>>/checkforcoffee.py -n', comment='start coffee')
+	job = cron.new(command='python <<path>>/checkforcoffee.py -n', comment='startcoffee')
 	job.hour.on(hour)
 	job.minute.on(mins)
 	cron.write()
@@ -104,7 +104,7 @@ def makeCoffee(cmd):
                 d = datetime.now()
                 t = d.minute + 15
                 cron = CronTab(user='pi')
-                job = cron.new(command='python <<path>>/checkforcoffee.py -n', comment='start coffee')
+                job = cron.new(command='python <<path>>/checkforcoffee.py -n', comment='startcoffee')
                 job.minute.on(t)
                 cron.write()
         else:
@@ -130,7 +130,7 @@ def cancCoff(text):
 	delete = 0
 	cron = CronTab(user='<<name of Raspberry Pi account>>')
 	for job in cron:
-	        if job.comment == 'start coffee':
+	        if job.comment == 'startcoffee':
 			delete = 1
                 	cron.remove(job)
 	if delete == 1 and text == 1:
