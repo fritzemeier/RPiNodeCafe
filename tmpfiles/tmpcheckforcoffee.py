@@ -44,10 +44,10 @@ def schedCoff(cmd):
 	log = ''
 	text = ''
         if len(cmd) < 3:
-		log = 'Attempted to schedule coffee without specifying time.'
+		log = 'Attempted to schedule coffee without specifying time on ' + str(datetime.now())
 		sms = 'Time was not specified.'
 	elif len(cmd[2]) < 4:
-		log = 'Attempted to schedule coffee with incorrect time format.'
+		log = 'Attempted to schedule coffee with incorrect time format on ' + str(datetime.now())
 		sms = 'Time was not written correctly: ' + cmd[2]
 	if log != '' and sms != "":
 		myFile = open('<<path>>/log.txt','a')
@@ -80,13 +80,13 @@ def makeCoffee(cmd):
 	write = 0
 	if len(cmd) == 1:
 		log = 'Instant made coffee from cell at ' + str(datetime.now())
-		sms = "Coffee auto started from cell"
+		sms = "Coffee auto started from cell\nStarting a 15 minute shut off timer."
 	else:
 		extra = ''
 		for x in cmd[1:]:
 			extra = extra + ' ' + x
 		log = 'Instant made coffee from cell at ' + str(datetime.now()) + '\n	Extra arguments: ' + extra
-		sms = "Coffee auto started from cell\nExtra arguments were: " + extra
+		sms = "Coffee auto started from cell\nStarting a 15 minute shut off timer.\nExtra arguments were: " + extra
 
         buff = StringIO()
         c = pycurl.Curl()
