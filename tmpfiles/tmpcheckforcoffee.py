@@ -178,13 +178,13 @@ def deleteMessages():
 	for message in voice.sms().messages:
         	message.delete()
 
+voice = Voice()
+voice.login('<<email which Pi uses to receive texts>>', '<<password of email address>>')
+
+voice.sms()
+
 
 if __name__ == '__main__':
-	voice = Voice()
-	voice.login('<<email which Pi uses to receive texts>>', '<<password of email address>>')
-
-	voice.sms()
-
 	text = []
 	cmd = []
 	tmp = []

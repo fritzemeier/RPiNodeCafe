@@ -1,18 +1,19 @@
 #!/bin/bash
 #Installs dependencies
-echo "Is this your first time running install.sh or are you reinstalling/modifying the install?"
+echo "Have you installed of the dependencies already?"
 read A
 
 if [ "$A" = "y" ]; then
+	echo "The following questions will attempt to run as a sudoer."
 	echo "Do you have the BeautifulSoup python module installed? (y/n) "
 	read A
 	if [ "$A" = "n" ]; then
-		pip install BeautifulSoup
+		sudo pip install BeautifulSoup
 	fi
 	echo "Do you have the python-crontab python module installed? (y/n) "
 	read A
 	if [ "$A" = "n" ]; then
-		pip install python-crontab
+		sudo pip install python-crontab
 	fi
 
 	echo "Is a cronjob already scheduled to check for coffee?"
@@ -22,13 +23,14 @@ if [ "$A" = "y" ]; then
 		echo "
 
 
-		"
-		echo "Adding cron job to check for check messages every second
+
+		Adding cron job to check for check messages every second
 
 
 
 		"
-		crontab -u pi -l >> tmp
+
+		crontab -l >> tmp
 		echo "* * * * * python $PWD/checkforcoffee.py >> $PWD/coffeecron.log 2>&1 #coffeecheck" >> tmp
 		crontab tmp
 		rm tmp
@@ -62,11 +64,14 @@ https://accounts.google.com/DisplayUnlockCaptcha
 and allow access to third-party applications without
 the need for Captcha verification.
 
+	Press enter to continue.
 
-------------------------------------------------------
 
+------------------------------------------------------"
 
-Has update.sh been run already? (y/n) "
+read A
+
+echo "Has update.sh been run already? (y/n) "
 read ANSWER
 
 if [ "$ANSWER" = 'n' ]; then

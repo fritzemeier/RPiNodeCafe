@@ -1,11 +1,12 @@
 #Updates files with users information
-echo "Is this the first time running update or are you changing current info? (y/n) "
+echo "Have you run update.sh before? (y/n) "
 read A
-echo "Updating files"
 if [ "$A" = "y" ]; then
+	echo "Installing files"
 	python initialsetup.py $PWD/tmpfiles/tmpsetup.py setup.py $PWD/tmpfiles/tmpcheckforcoffee.py checkforcoffee.py $PWD/tmpfiles/tmpdeletetextmessages.py deletetextmessages.py $PWD/tmpfiles/tmpjsonconfig $PWD/sonoff-server/sonoff.config.json
 	rm initialsetup.py
 else
+	echo "Updating files"
 	python setup.py $PWD/tmpfiles/tmpcheckforcoffee.py checkforcoffee.py $PWD/tmpfiles/tmpdeletetextmessages.py deletetextmessages.py $PWD/tmpfiles/tmpjsonconfig $PWD/sonoff-server/sonoff.config.json
 fi
 
