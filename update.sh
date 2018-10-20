@@ -9,6 +9,8 @@ fi
 if [ "$A" = "y" ]; then
 	echo "Updating files"
 	python setup.py $PWD/tmpfiles/tmpcheckforcoffee.py checkforcoffee.py $PWD/tmpfiles/tmpdeletetextmessages.py deletetextmessages.py $PWD/tmpfiles/tmpjsonconfig $PWD/sonoff-server/sonoff.config.json
+	echo "Removing initialsetup.py if repo was recently pulled for updates."
+	rm initialsetup.py
 else
 	echo "Skipping updating/installing files"
 fi
