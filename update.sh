@@ -7,6 +7,7 @@ echo "Enter any other key if you want to skip this part."
 read A
 if [ "$A" = "1" ]; then
 	echo "Installing files"
+	echo "NOTE: YOUR PASSWORDS YOU ENTER WILL BE STORED IN PLAIN TEXT FILES"
 	python $PWD/initialsetup.py $PWD/tmpfiles/tmpsetup.py setup.py $PWD/tmpfiles/tmpcheckforcoffee.py checkforcoffee.py $PWD/tmpfiles/tmpdeletetextmessages.py deletetextmessages.py $PWD/tmpfiles/tmpjsonconfig $PWD/sonoff-server/sonoff.config.json
 	rm $PWD/initialsetup.py
 fi

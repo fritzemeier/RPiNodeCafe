@@ -166,7 +166,7 @@ def execCmd(cmd):
 	complete = 0
 	if str(cmd[0]).lower() == 'coffee':
 		complete = makeCoffee(cmd)
-	elif str(cmd[0]+cmd[1]).lower() == 'schedulecoffee':
+	elif len(cmd) > 1 and str(cmd[0]+cmd[1]).lower() == 'schedulecoffee':
 		complete = schedCoff(cmd)
 	elif str(cmd[0]).lower() == 'cancel':
 		complete = cancCoff(1)
