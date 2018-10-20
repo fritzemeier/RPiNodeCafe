@@ -90,7 +90,7 @@ def makeCoffee(cmd):
 
         buff = StringIO()
         c = pycurl.Curl()
-        c.setopt(c.URL, 'http://<<IP of NodeJS server>>:<<port of NodeJS server>>/devices/<<Sonoff WiFi switch device name>>/status')
+        c.setopt(c.URL, 'http://<<IP of NodeJS server>>:<<port of NodeJS server HTTP connections>>/devices/<<Sonoff WiFi switch device name>>/status')
         c.setopt(c.WRITEDATA, buff)
         c.perform()
         c.close()
@@ -98,7 +98,7 @@ def makeCoffee(cmd):
 
         c = pycurl.Curl()
         if buff.getvalue() == '0':
-                c.setopt(c.URL, 'http://<<IP of NodeJS server>>:<<port of NodeJS server>>/devices/<<Sonoff WiFi switch device name>>/on')
+                c.setopt(c.URL, 'http://<<IP of NodeJS server>>:<<port of NodeJS server HTTP connections>>/devices/<<Sonoff WiFi switch device name>>/on')
                 c.setopt(c.WRITEDATA, buff)
                 log = log + ' | Turned on relay'
                 d = datetime.now()
@@ -108,7 +108,7 @@ def makeCoffee(cmd):
                 job.minute.on(t)
                 cron.write()
         else:
-                c.setopt(c.URL, 'http://<<IP of NodeJS server>>:<<port of NodeJS server>>/devices/<<Sonoff WiFi switch device name>>/off')
+                c.setopt(c.URL, 'http://<<IP of NodeJS server>>:<<port of NodeJS server HTTP connections>>/devices/<<Sonoff WiFi switch device name>>/off')
                 c.setopt(c.WRITEDATA, buff)
                 log = log + ' | Turned off relay'
                 sms = ''
