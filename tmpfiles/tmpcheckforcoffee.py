@@ -135,14 +135,14 @@ def cancCoff(text):
                 	cron.remove(job)
 	if delete == 1 and text == 1:
 	        cron.write()
-		log = 'Canceled all scheduled coffee.'
+		log = 'Canceled all scheduled coffee at ' + str(datetime.now())
 		sms = "Canceling all scheduled coffee."
 	elif text == 1:
-		log = 'Attempted to cancel scheduled coffee, but none scheduled.'
+		log = 'Attempted to cancel scheduled coffee, but none scheduled at ' + str(datetime.now())
 		sms = "No coffee currently scheduled."
 	elif text == 0:
 		log = "Coffee finished at " + str(datetime.now())
-                sms = "Coffe finished"
+                sms = "Coffee finished"
 
 	if log != '' and sms != "":
 		myFile = open('<<path>>/log.txt', 'a')
