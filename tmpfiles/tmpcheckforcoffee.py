@@ -133,8 +133,9 @@ def cancCoff(text):
 	        if job.comment == 'startcoffee':
 			delete = 1
                 	cron.remove(job)
+        cron.write()
+
 	if delete == 1 and text == 1:
-	        cron.write()
 		log = 'Canceled all scheduled coffee at ' + str(datetime.now())
 		sms = "Canceling all scheduled coffee."
 	elif text == 1:
