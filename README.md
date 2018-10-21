@@ -16,8 +16,10 @@ Afterwards, visit https://accounts.google.com/DisplayUnlockCaptcha and
 allow access to third-party applications without the need for Captcha 
 verification.
 
-NOTE: THE SCRIPTS WILL HOLD YOUR GOOGLE PASSWORD IN PLAIN TEXT.
-This is why a separate account is suggested.
+IMPORTANT NOTES:
+ - THE FILES WILL HOLD YOUR ROUTER'S PASSWORD IN PLAIN TEXT.
+ - THE SCRIPTS WILL HOLD YOUR GOOGLE PASSWORD IN PLAIN TEXT.
+	This is why a separate account is suggested.
 
 # Installation Steps
 1) Clone the repository onto a Raspberry Pi.
@@ -26,7 +28,11 @@ This is why a separate account is suggested.
 
 3) Start the NodeJS server using the sonoff.server.js file.
 
-4) Connect the sonoff device to the server -- instructions at https://github.com/mdopp/simple-sonoff-server
+4) Connect the Sonoff device to the server -- instructions at https://github.com/mdopp/simple-sonoff-server.
+
+# HELP WITH SERVER SET UP
+I have written about my experience setting up the server and more on my website.
+You can read about it here: https://fritzemeier.info
 
 # Dependencies
 The install.sh does ask if some of these are installed (marked with *), others my need to be manually installed.
