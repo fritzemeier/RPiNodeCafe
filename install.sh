@@ -15,6 +15,11 @@ if [ "$A" = "n" ]; then
 	if [ "$A" = "n" ]; then
 		sudo pip install python-crontab
 	fi
+	echo "Do you have NodeJS installed? (y/n) "
+	read A
+	if [ "$A" = "n" ]; then
+		sudo pip install BeautifulSoup
+	fi
 
 	echo "Is a cronjob already scheduled to check for coffee?"
 	read A
