@@ -16,7 +16,7 @@ Afterwards, visit https://accounts.google.com/DisplayUnlockCaptcha and
 allow access to third-party applications without the need for Captcha 
 verification.
 
-# IMPORTANT NOTES
+# IMPORTANT SECURITY NOTES
  - THE FILES WILL HOLD YOUR ROUTER'S PASSWORD IN PLAIN TEXT.
  - THE SCRIPTS WILL HOLD YOUR GOOGLE PASSWORD IN PLAIN TEXT.
 	This is why a separate account is suggested.
