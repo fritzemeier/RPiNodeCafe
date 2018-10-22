@@ -51,7 +51,7 @@ def schedCoff(cmd):
 		sms = 'Time was not written correctly: ' + cmd[2]
 	if log != '' and sms != "":
 		myFile = open('<<path>>/log.txt','a')
-		myFile.write('\n' + log)
+		myFile.write(log + '\n')
 		voice.send_sms("+1<<phone number from which you will be sending commands -- including area code>>",sms)
 		return 1
 	time = cmd[2]
@@ -118,7 +118,7 @@ def makeCoffee(cmd):
 
 	if log != '':
 		myFile = open('<<path>>/log.txt','a')
-		myFile.write('\n' + log)
+		myFile.write(log + '\n')
 	if sms != '':
 		voice.send_sms("+1<<phone number from which you will be sending commands -- including area code>>", sms)
 
@@ -147,7 +147,7 @@ def cancCoff(text):
 
 	if log != '' and sms != "":
 		myFile = open('<<path>>/log.txt', 'a')
-		myFile.write('\n' + log)
+		myFile.write(log + '\n')
 		voice.send_sms("+1<<phone number from which you will be sending commands -- including area code>>", sms)
 	return 1
 

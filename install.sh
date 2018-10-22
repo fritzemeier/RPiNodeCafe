@@ -18,7 +18,7 @@ if [ "$A" = "n" ]; then
 	echo "Do you have NodeJS installed? (y/n) "
 	read A
 	if [ "$A" = "n" ]; then
-		sudo pip install BeautifulSoup
+		sudo apt-get install nodejs
 	fi
 
 	echo "Is a cronjob already scheduled to check for coffee?"
