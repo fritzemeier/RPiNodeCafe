@@ -20,6 +20,7 @@ verification.
  - THE FILES WILL HOLD YOUR ROUTER'S PASSWORD IN PLAIN TEXT.
  - THE SCRIPTS WILL HOLD YOUR GOOGLE PASSWORD IN PLAIN TEXT.
 	This is why a separate account is suggested.
+ - SOME OF THE NODE MODULES MAY NOT BE AS SAFE AS THEY SHOULD BE. PLEASE BE CAREFUL.
 
 # Installation Steps
 1) Clone the repository onto a Raspberry Pi.
