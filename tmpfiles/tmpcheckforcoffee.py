@@ -67,7 +67,7 @@ def schedCoff(cmd):
 	else:
 		mins = int(time[3])
 	cron = CronTab(user='<<name of Raspberry Pi account>>')
-	job = cron.new(command='python <<path>>/checkforcoffee.py -n >> execution.log', comment='startcoffee')
+	job = cron.new(command='python <<path>>/checkforcoffee.py -n >> <<path>>/execution.log', comment='startcoffee')
 	job.hour.on(hour)
 	job.minute.on(mins)
 	cron.write()
@@ -103,8 +103,10 @@ def makeCoffee(cmd):
                 log = log + ' | Turned on relay'
                 d = datetime.now()
                 t = d.minute + 15
+				if t >= 60:
+					t = t - 60
                 cron = CronTab(user='pi')
-                job = cron.new(command='python <<path>>/checkforcoffee.py -n >> exectution.log', comment='startcoffee')
+                job = cron.new(command='python <<path>>/checkforcoffee.py -n >> <<path>>/exectution.log', comment='startcoffee')
                 job.minute.on(t)
                 cron.write()
         else:
