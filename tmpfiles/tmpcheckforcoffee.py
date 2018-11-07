@@ -67,7 +67,7 @@ def schedCoff(cmd):
 	else:
 		mins = int(time[3])
 	cron = CronTab(user='<<name of Raspberry Pi account>>')
-	job = cron.new(command='python <<path>>/checkforcoffee.py -n', comment='startcoffee')
+	job = cron.new(command='python <<path>>/checkforcoffee.py -n >> execution.log', comment='startcoffee')
 	job.hour.on(hour)
 	job.minute.on(mins)
 	cron.write()
