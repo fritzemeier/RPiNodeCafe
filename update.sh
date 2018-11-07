@@ -33,7 +33,7 @@ the account without a need for Captcha Verification
 
 
 "
-if [ "$A" = "1"]; then
+if [ "$A" = "1" ]; then
 	echo "Has install.sh been run already? (y/n) "
 	read ANSWER
 
