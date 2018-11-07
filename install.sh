@@ -21,26 +21,6 @@ if [ "$A" = "n" ]; then
 		sudo apt-get install nodejs
 	fi
 
-	echo "Is a cronjob already scheduled to check for coffee?"
-	read A
-	if [ "$A" = "n" ]; then
-		#Inserts a cron job to check for commands from Google Voice account every minute
-		echo "
-
-
-
-		Adding cron job to check for check messages every second
-
-
-
-		"
-
-		crontab -l >> tmp
-		echo "* * * * * python $PWD/checkforcoffee.py >> $PWD/coffeecron.log 2>&1 #coffeecheck" >> tmp
-		crontab tmp
-		rm tmp
-	fi
-
 	echo "Have you already installed the pygooglevoice module from https://github.com/pettazz/pygooglevoice?"
 	read A
 	if [ "$A" = "n" ]; then
@@ -59,6 +39,26 @@ if [ "$A" = "n" ]; then
 	echo "Finished installing all dependencies"
 else
 	echo "Skipping the installation step."
+fi
+
+echo "Is a cronjob already scheduled to check for coffee?"
+read A
+if [ "$A" = "n" ]; then
+	#Inserts a cron job to check for commands from Google Voice account every minute
+	echo "
+
+
+
+	Adding cron job to check for check messages every second
+
+
+
+	"
+
+	crontab -l >> tmp
+	echo "* * * * * python $PWD/checkforcoffee.py >> $PWD/coffeecron.log 2>&1 #coffeecheck" >> tmp
+	crontab tmp
+	rm tmp
 fi
 
 echo "
