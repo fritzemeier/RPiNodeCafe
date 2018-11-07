@@ -71,8 +71,13 @@ def schedCoff(cmd):
 	job.hour.on(hour)
 	job.minute.on(mins)
 	cron.write()
-	voice.send_sms("+1<<phone number from which you will be sending commands -- including area code>>","Executing " + reply)
-	return 1
+	log = "Scheduled coffee for " + time + " at " + str(datetime.now())
+	sms = "Executing " + reply
+	if log != '' and sms != "":
+		myFile = open('<<path>>/log.txt','a')
+		myFile.write(log + '\n')
+		voice.send_sms("+1<<phone number from which you will be sending commands -- including area code>>", sms)
+		return 1
 
 def makeCoffee(cmd):
 	log = ''
