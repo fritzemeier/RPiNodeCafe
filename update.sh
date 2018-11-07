@@ -32,9 +32,12 @@ the account without a need for Captcha Verification
 ---------------------------------------------------
 
 
-Has install.sh been run already? (y/n) "
-read ANSWER
+"
+if [ "$A" = "1"]; then
+	echo "Has install.sh been run already? (y/n) "
+	read ANSWER
 
-if [ "$ANSWER" = 'n' ]; then
-	./install.sh
+	if [ "$ANSWER" = 'n' ]; then
+		./install.sh
+	fi
 fi
