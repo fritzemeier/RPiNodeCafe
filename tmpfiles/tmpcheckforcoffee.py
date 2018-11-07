@@ -43,7 +43,7 @@ def extractsms(htmlsms) :
 def schedCoff(cmd):
 	log = ''
 	text = ''
-        if len(cmd) < 3:
+	if len(cmd) < 3:
 		log = 'Attempted to schedule coffee without specifying time on ' + str(datetime.now())
 		sms = 'Time was not specified.'
 	elif len(cmd[2]) < 4:
@@ -64,7 +64,7 @@ def schedCoff(cmd):
 		hour = int(time[1])
 	if int(time[2]) > 0:
 		 mins = int(time[2]) * 10 + int(time[3])
-	else:
+	else: 	
 		mins = int(time[3])
 	cron = CronTab(user='<<name of Raspberry Pi account>>')
 	job = cron.new(command='python <<path>>/checkforcoffee.py -n >> <<path>>/execution.log', comment='startcoffee')
@@ -107,7 +107,7 @@ def makeCoffee(cmd):
                 c.setopt(c.WRITEDATA, buff)
                 log = log + ' | Turned on relay'
                 d = datetime.now()
-                t = d.minute + 15
+                t = d.minute + 15	
 				if t >= 60:
 					t = t - 60
                 cron = CronTab(user='pi')
