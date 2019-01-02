@@ -108,8 +108,8 @@ def makeCoffee(cmd):
                 log = log + ' | Turned on relay'
                 d = datetime.now()
                 t = d.minute + 15
-			if t >= 60:
-				t = t - 60
+		if t >= 60:
+			t = t - 60
                 cron = CronTab(user='pi')
                 job = cron.new(command='python <<path>>/checkforcoffee.py -n >> <<path>>/exectution.log', comment='startcoffee')
                 job.minute.on(t)
