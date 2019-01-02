@@ -197,7 +197,7 @@ if __name__ == '__main__':
 	cmd = []
 	tmp = []
 
-    if len(sys.argv) < 2:
+	if len(sys.argv) < 2:
 		for msg in extractsms(voice.sms.html):
 			if str(msg[u'from']) == '+1<<phone number from which you will be sending commands -- including area code>>:':
 				for word in msg[u'text'].split(' '):
@@ -205,16 +205,16 @@ if __name__ == '__main__':
 				if execCmd(cmd) == 1:
 					deleteMessages()
 
-    elif len(sys.argv) >= 2:
-        for i in sys.argv[1:]:
-                tmp.append(i)
+	elif len(sys.argv) >= 2:
+		for i in sys.argv[1:]:
+			tmp.append(i)
 
-        if tmp[0].lower() == '-n':
-                cmd.append('coffee')
-        elif tmp[0].lower() == '-s':
-            time = tmp[1]
+		if tmp[0].lower() == '-n':
+			cmd.append('coffee')
+		elif tmp[0].lower() == '-s':
+			time = tmp[1]
 			for x in ['schedule', 'coffee', time]:
-	            cmd.append(x)
+				cmd.append(x)
 		elif tmp[0].lower() == '-c':
 			cmd.append('cancel')
 
