@@ -36,7 +36,8 @@ I have written about my experience setting up the server and more on my website.
 You can read about it here: https://austin.fritzemeier.info/projects.html#RPiSMS
 
 # Dependencies
-The install.sh does ask if some of these are installed (marked with \*), others my need to be manually installed.
+The install.sh does ask if some of these are installed (marked with \*), others may need to be manually installed.
+
 BeautifulSoup*
 
 python-crontab*
