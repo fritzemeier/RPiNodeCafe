@@ -40,6 +40,34 @@ def extractsms(htmlsms) :
             msgitems.append(msgitem)					# add msg dictionary to list
     return msgitems
 
+def startServer(cmd):
+    log = ""
+    sms = ""
+    if str(cmd[0]+cmd[1]).lower() == "startserver":
+        buff = StringIO()
+        c = pycurl.Curl()
+        c.setopt(c.URL, 'http://<<IP of NodeJS server>>:<<port of NodeJS server HTTP connections>>/devices/')
+        c.setopt(c.WRITEDATA, buff)
+
+        try:
+                c.perform()
+                c.close()
+                body = buff.getvalue()
+                log = "Attempted to start server while already running at " + str(datetime.now())
+                sms = "Server already running"
+        except:
+                os.system("node sonoff-server/sonoff.server.js")
+                log = "Server started at " + str(datetime.now())
+                sms = "Started server"
+
+	if log != "":
+		myFile = open("<<path>>/log.txt","a")
+		myFile.write(log + "\n")
+	if sms != "":
+		voice.send_sms(sms)
+
+	return 1
+
 def schedCoff(cmd):
 	log = ''
 	text = ''
@@ -178,6 +206,8 @@ def execCmd(cmd):
 		complete = schedCoff(cmd)
 	elif str(cmd[0]).lower() == 'cancel':
 		complete = cancCoff(1)
+        elif str(cmd) > 1 and str(cmd[0]+cmd[1]).lower() == 'startserver':
+                complete = startServer(cmd)
 	else:
 		complete = incorrectPhrase(cmd)
 	return complete
