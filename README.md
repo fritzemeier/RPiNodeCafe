@@ -1,5 +1,8 @@
 
 # RPiNodeCafe
+
+CURRENTLY COMPLETELY BROKEN AS THE GOOGLE VOICE API HAS CHANGED.
+
 A NodeJS server and Python scripts to set up a SMS-capable WiFi relay.
 
 A combination of the old RPiCafeLogging (formerly RPiCafe) repo and the ATF-Sonoff-Server
