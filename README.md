@@ -1,7 +1,6 @@
-
+# Deprecated due to changes in the Google Voice API.
 # RPiNodeCafe
 
-CURRENTLY COMPLETELY BROKEN AS THE GOOGLE VOICE API HAS CHANGED.
 
 A NodeJS server and Python scripts to set up a SMS-capable WiFi relay.
 
